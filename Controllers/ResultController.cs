@@ -15,28 +15,104 @@ namespace RPSAPI.Controllers
 
         public ResultController()
         {
-
-
             
+
+
         }
 
-        [HttpPost]
-        public IDictionary<string, string> Post(IDictionary<string, string> playRequest)
+        [HttpPost("Get Result")]
+        public IEnumerable<ResultController> getresults()
         {
-            var dictionary = new Dictionary<string, string>();
-            string value = playRequest["PlayerChoice"];
-
-            //Create an array, use a random generator to select one of the 3 things, 
-            //if or else the matches//
-            //
-
-            dictionary.Add("PlayerChoice", value);
-            dictionary.Add("CpuChoice", "Rock");
-            dictionary.Add("Result", "Win");
-
-            return dictionary;
+       
+            string playerselection = playRequest["PlayerChoice"];
+            Random r = new Random();
+            int computerChoice = r.Next(4);
+            int playerwins = 0;
+            int computerwins = 0;
+            int tiedgame = 0;
 
 
+            if (computerChoice == 1)
+            //rock
+            {
+                if (playerselection == "rock")
+                {
+                    tiedgame ++;
+                }
+
+                else if (playerselection == "paper")
+                //paper
+                {
+                    playerwins ++;
+
+                }
+                else if (playerselection == "scissors")
+                {
+                    computerwins ++;
+                }
+                else
+                {
+                    Console.WriteLine("You must choose rock,paper or scissors!");
+
+                }
+
+            }
+
+            else if (computerChoice == 2)
+            //Paper
+            {
+                if (playerselection == "rock")
+                {
+                    computerwins++;
+
+                }
+                else if (playerselection == "paper")
+                {
+                    tiedgame++;
+
+                }
+                else if (playerselection == "scissors")
+                {
+                    playerwins++;
+                }
+                
+            }
+            else if (computerChoice == 3)
+            //scissors
+            {
+                if (playerselection == "rock")
+                {
+                    playerwins++;
+
+                }
+                else if (playerselection == "paper")
+                {
+                    computerwins++;
+
+                }
+                else if (playerselection == "scissors")
+                {
+                    tiedgame++;
+
+                }
+                else
+                {
+                    Console.WriteLine("You must choose rock,paper or scissors!");
+
+                }
+            }
+
+            if (playerwins > computerwins)
+             {
+                 const char* victory = pvictory();
+                
+                  return victory("ok");
+            }
+            else if 
+
+
+
+            }
 
 
         }
