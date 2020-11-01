@@ -21,10 +21,12 @@ namespace RPSAPI.Controllers
         }
 
         [HttpPost("Get Result")]
-        public IEnumerable<ResultController> getresults()
+        public string getresults()
         {
        
             string playerselection = playRequest["PlayerChoice"];
+
+            
             Random r = new Random();
             int computerChoice = r.Next(4);
             int playerwins = 0;
@@ -104,11 +106,12 @@ namespace RPSAPI.Controllers
 
             if (playerwins > computerwins)
              {
-                 const char* victory = pvictory();
-                
-                  return victory("ok");
+                            
+                  return "You won!";
             }
-            else if 
+            else {
+                
+            }
 
 
 
@@ -117,4 +120,4 @@ namespace RPSAPI.Controllers
 
         }
     }
-}
+
